@@ -6,7 +6,7 @@ import React from 'react';
 const AboutPage = () => {
 
     const router = useRouter();
-    const isloggedIn = true;
+    const isloggedIn = false;
     const handleNavigation = () => {
         if(isloggedIn){
             router.push("/about/address")
@@ -18,7 +18,9 @@ const AboutPage = () => {
     return (
         <div>
             <p className='font-bold text-3xl'>about page</p>
+            <p>
             <Link href="/about/address">Address Page</Link>
+            </p>
 
             <button type="button" onClick={handleNavigation}>Address page</button>
         </div>
