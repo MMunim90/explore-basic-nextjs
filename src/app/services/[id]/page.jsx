@@ -1,7 +1,7 @@
 import React from "react";
 
 const ServiceDetailsPage = ({ params }) => {
-  const id = params.id;
+  const id = params?.id;
 
   const data = [
     {
@@ -78,14 +78,20 @@ const ServiceDetailsPage = ({ params }) => {
     },
   ];
 
-  const singleData = data.find((d) => d._id == id)
+  const singleData = data.find((d) => d._id == id);
 
   return (
     <div>
-      <h1>ServiceDetailsPage</h1>
-      <p>ID: {id}</p>
-      <p>{singleData.service_name}</p>
-      <img src={singleData.service_image}/>
+      <h1 className="text-center my-10 text-6xl">ServiceDetailsPage</h1>
+      <div key={singleData._id} className="flex gap-16">
+        <div className="space-y-6 text-xl">
+          <p>ID: {id}</p>
+          <p>{singleData.service_name}</p>
+          <p className="font-bold">Description</p>
+          <p className="max-w-xl">{singleData.service_description}</p>
+        </div>
+        <img className="w-[600px] h-auto" src={singleData.service_image} />
+      </div>
     </div>
   );
 };
