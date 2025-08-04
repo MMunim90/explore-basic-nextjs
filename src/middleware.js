@@ -6,7 +6,7 @@ export function middleware(request) {
     console.log(currentCookie.value);
 
     const dummyUserData = {
-        role: "user",
+        role: "admin",
         email: "test@admin.com"
     }
 
