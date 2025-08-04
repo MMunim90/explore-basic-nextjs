@@ -16,7 +16,7 @@ const AboutPage = () => {
         }
     };
     return (
-        <div>
+        <div className='testing-purpose-css-class'>
             <p className='font-bold text-3xl'>about page</p>
             <p>
             <Link href="/about/address">Address Page</Link>
