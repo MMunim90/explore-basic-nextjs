@@ -1,5 +1,12 @@
 import Link from "next/link";
 import MealSearchInput from "./components/MealSearchInput";
+import Image from "next/image";
+import { Oswald } from "next/font/google";
+
+const oswald = Oswald({
+  weight: ["400"],
+  subsets: ["latin"],
+})
 
 export const metadata = {
   title: "All Meals",
@@ -34,11 +41,12 @@ export default async function MealsPage({ searchParams }) {
       <div className="grid grid-cols-4 gap-4">
         {meals?.map((meal) => {
           return (
-            <div key={meal?.idMeal}>
+            <div key={meal?.idMeal} className={oswald.className}>
+              <Image src={meal?.strMealThumb} width={641} height={641} alt={meal?.strMeal} />
               <p className="text-2xl font-bold">{meal?.strMeal}</p>
               <p>{meal?.strInstructions}</p>
 
-              <Link className="text-blue-500 underline" href={`/meals/${meal.idMeal}`}>Detail</Link>
+              <Link className="text-blue-500 underline" href={`/meals/${meal.idMeal}`}>Details</Link>
             </div>
           );
         })}
