@@ -11,10 +11,12 @@ export function middleware(request) {
     };
 
     const isServicePage = request.nextUrl.pathname.startsWith("/services");
+    const isAdminSpecificRoute = request.nextUrl.pathname.startsWith("/dashboard")
     const isAdmin = dummyUserData.role === "admin";
 
-    if (isServicePage && !isAdmin) {
-        return NextResponse.rewrite(new URL("/login", request.url));
+    if (isAdminSpecificRoute && isServicePage && !isAdmin) {
+        const callbackURL = encodeURIComponent(req.nextUrl.pathname)
+        return NextResponse.redirect(new URL(`/api/auth/signin?callbackUrl=${callbackURL}`, request.url));
     }
 
     return NextResponse.next();
